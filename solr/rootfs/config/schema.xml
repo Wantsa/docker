@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Solr managed schema - automatically generated - DO NOT EDIT -->
+<schema name="sunspot" version="1.0">
+  <uniqueKey>id</uniqueKey>
+  <defaultSearchField>text</defaultSearchField>
+  <solrQueryParser defaultOperator="AND"/>
+  <fieldType name="boolean" class="solr.BoolField" omitNorms="true"/>
+  <fieldType name="booleans" class="solr.BoolField" sortMissingLast="true" multiValued="true"/>
+  <fieldType name="date" class="solr.TrieDateField" omitNorms="true"/>
+  <fieldType name="location" class="solr.LatLonType" subFieldSuffix="_coordinate"/>
+  <fieldType name="rand" class="solr.RandomSortField" omitNorms="true"/>
+  <fieldType name="sdouble" class="solr.TrieDoubleField" omitNorms="true"/>
+  <fieldType name="sfloat" class="solr.TrieFloatField" omitNorms="true"/>
+  <fieldType name="sint" class="solr.TrieIntField" omitNorms="true"/>
+  <fieldType name="slong" class="solr.TrieLongField" omitNorms="true"/>
+  <fieldType name="string" class="solr.StrField" omitNorms="true"/>
+  <fieldType name="tdate" class="solr.TrieDateField" omitNorms="true"/>
+  <fieldType name="tdates" class="solr.TrieDateField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="6"/>
+  <fieldType name="tdouble" class="solr.TrieDoubleField" omitNorms="true"/>
+  <fieldType name="tdoubles" class="solr.TrieDoubleField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
+  <fieldType name="text" class="solr.TextField" omitNorms="true" omitTermFreqAndPositions="true" positionIncrementGap="100" multiValued="true">
+    <analyzer type="index">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.ASCIIFoldingFilterFactory"/>
+      <filter class="solr.NGramFilterFactory" maxGramSize="50" minGramSize="2"/>
+      <filter class="solr.EnglishMinimalStemFilterFactory"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+      <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.StandardFilterFactory"/>
+      <filter class="solr.ASCIIFoldingFilterFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.EnglishMinimalStemFilterFactory"/>
+      <filter class="solr.PorterStemFilterFactory"/>
+      <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="tfloat" class="solr.TrieFloatField" omitNorms="true"/>
+  <fieldType name="tfloats" class="solr.TrieFloatField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
+  <fieldType name="tint" class="solr.TrieIntField" omitNorms="true"/>
+  <fieldType name="tints" class="solr.TrieIntField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
+  <fieldType name="tlongs" class="solr.TrieLongField" positionIncrementGap="0" docValues="true" multiValued="true" precisionStep="8"/>
+  <field name="_version_" type="string" multiValued="false" indexed="true" stored="true"/>
+  <field name="class_name" type="string" multiValued="false" indexed="true" stored="false"/>
+  <field name="id" type="string" multiValued="false" indexed="true" stored="true"/>
+  <field name="lat" type="tdouble" multiValued="false" indexed="true" stored="true"/>
+  <field name="lng" type="tdouble" multiValued="false" indexed="true" stored="true"/>
+  <field name="text" type="string" multiValued="true" indexed="true" stored="false"/>
+  <field name="type" type="string" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_coordinate" type="tdouble" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="random_*" type="rand" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_textsv" type="text" termVectors="true" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="_local*" type="tdouble" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_texts" type="text" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_textv" type="text" termVectors="true" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_text" type="text" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_itms" type="tint" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_ftms" type="tfloat" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_dtms" type="tdate" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_etms" type="tdouble" termVectors="true" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_llms" type="location" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_bms" type="boolean" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_dms" type="date" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_ems" type="sdouble" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_fms" type="sfloat" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_ims" type="sint" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_lms" type="slong" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_sms" type="string" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="*_itm" type="tint" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_its" type="tint" multiValued="false" indexed="true" stored="true"/>
+  <dynamicField name="*_ftm" type="tfloat" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_fts" type="tfloat" multiValued="false" indexed="true" stored="true"/>
+  <dynamicField name="*_dtm" type="tdate" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_dts" type="tdate" multiValued="false" indexed="true" stored="true"/>
+  <dynamicField name="*_etm" type="tdouble" termVectors="true" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_ets" type="tdouble" termVectors="true" multiValued="false" indexed="true" stored="true"/>
+  <dynamicField name="*_llm" type="location" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_lls" type="location" multiValued="false" indexed="true" stored="true"/>
+  <dynamicField name="*_bm" type="boolean" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_bs" type="boolean" multiValued="false" indexed="true" stored="true"/>
+  <dynamicField name="*_dm" type="date" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_ds" type="date" multiValued="false" indexed="true" stored="true"/>
+  <dynamicField name="*_em" type="sdouble" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_es" type="sdouble" multiValued="false" indexed="true" stored="true"/>
+  <dynamicField name="*_fm" type="sfloat" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_fs" type="sfloat" multiValued="false" indexed="true" stored="true"/>
+  <dynamicField name="*_im" type="sint" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_is" type="sint" multiValued="false" indexed="true" stored="true"/>
+  <dynamicField name="*_lm" type="slong" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_ls" type="slong" multiValued="false" indexed="true" stored="true"/>
+  <dynamicField name="*_sm" type="string" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="*_ss" type="string" multiValued="false" indexed="true" stored="true"/>
+  <dynamicField name="*_it" type="tint" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_ft" type="tfloat" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_dt" type="tdate" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_et" type="tdouble" termVectors="true" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_ll" type="location" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_b" type="boolean" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_d" type="date" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_e" type="sdouble" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_f" type="sfloat" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_i" type="sint" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_l" type="slong" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_s" type="string" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="*_p" type="location" multiValued="false" indexed="true" stored="true"/>
+</schema>
