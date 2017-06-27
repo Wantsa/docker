@@ -8,6 +8,7 @@ RUN apt-get update \
  && apt-get install -y nodejs \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
- && mkdir /app
+ && useradd --create-home --user-group --uid 1000 --shell `which bash` user
 
+USER user
 WORKDIR /app
