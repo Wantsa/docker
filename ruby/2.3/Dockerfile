@@ -3,7 +3,7 @@ FROM ruby:2.3
 ENV TERM=xterm PATH=/app/bin:$PATH DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
- && apt-get install -y xmlsec1 \
+ && apt-get install -y xmlsec1 libgit2-dev cmake \
  && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
  && apt-get install -y nodejs \
  && apt-get clean \
